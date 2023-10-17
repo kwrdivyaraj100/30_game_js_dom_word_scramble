@@ -9,6 +9,19 @@ const wordText = document.querySelector(".word"),
     scoreArea = document.querySelector(".score"),
     modalContent = document.querySelector(".modal-content");
 
+    
+
+var modal = document.getElementById("myModal");
+
+var btn = document.getElementById("myBtn");
+
+var span = document.getElementsByClassName("close")[0];
+
+var modalText = document.getElementById("modalText");
+
+let correctWord, timer;
+let score = 0; 
+
 
 const initTimer = maxTime => {
     clearInterval(timer);
@@ -109,3 +122,15 @@ const checkWord = () => {
 
 refreshBtn.addEventListener("click", initGame);
 checkBtn.addEventListener("click", checkWord);
+
+
+span.onclick = function() {
+    modal.style.display = "none";
+  }
+  
+  
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
