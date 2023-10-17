@@ -3,11 +3,38 @@ const wordText = document.querySelector(".word"),
     timeText = document.querySelector(".time b"),
     inputField = document.querySelector("input"),
     refreshBtn = document.querySelector(".refresh-word"),
-    checkBtn = document.querySelector(".check-word");
+    checkBtn = document.querySelector(".check-word"),
+    contentBox = document.querySelector(".container .content"),
+    startArea = document.querySelector(".startArea"),
+    scoreArea = document.querySelector(".score"),
+    modalContent = document.querySelector(".modal-content");
 
 
 
+const endGame = () => {
+    clearInterval(timer);
+    contentBox.style.display = "none";
+    startArea.style.display = "block";
+    modal.style.display = "block";
+    modalContent.classList.remove("modal-correct");
+    modalContent.classList.add("modal-wrong");
+    modalText.innerHTML = `
+        <center><br>Time off! <b>${correctWord.toUpperCase()}</b> was the correct word.
+        <br>You Lost The Game ! :(</center><br>
+        </center>
+        `;
 
+}
+
+const winGame = () => {
+    clearInterval(timer);
+    contentBox.style.display = "none";
+    startArea.style.display = "block";
+    modal.style.display = "block";
+    modalContent.classList.add("modal-correct");
+    modalText.innerHTML = `<br><center>Congrats You WIN THE GAME !!!!!!`;
+
+}
 
 
 const initGame = () => {
