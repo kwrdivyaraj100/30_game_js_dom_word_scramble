@@ -10,7 +10,25 @@ const wordText = document.querySelector(".word"),
     modalContent = document.querySelector(".modal-content");
 
 
+const initTimer = maxTime => {
+    clearInterval(timer);
+    timer = setInterval(() => {
+        if (maxTime > 0) {
+            maxTime--;
+            return timeText.innerText = maxTime;
+        }
+        modal.style.display = "block";
+        modalContent.classList.add("modal-wrong");
+        modalText.innerHTML = `<br>Time off! <b>${correctWord.toUpperCase()}</b> was the correct word`;
+        endGame();
+    }, 1000);
+}
 
+const start = () => {
+    contentBox.style.display = "block";
+    startArea.style.display = "none";
+    initGame();
+}
 const endGame = () => {
     clearInterval(timer);
     contentBox.style.display = "none";
